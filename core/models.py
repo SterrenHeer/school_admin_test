@@ -11,7 +11,7 @@ class Person(models.Model):
         verbose_name_plural = "People"
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
+        return f"{self.first_name} {self.last_name}"
 
 
 class Course(models.Model):
@@ -22,7 +22,7 @@ class Course(models.Model):
         unique_together = ("name", "year", )
 
     def __str__(self):
-        return self.name + ' (' + str(self.year) + ')'
+        return f"{self.name} {self.year}"
 
 
 class Grade(models.Model):
@@ -32,4 +32,4 @@ class Grade(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.person) + ' ' + str(self.course)
+        return f"{self.course}, ({self.grade}), {self.person}"
